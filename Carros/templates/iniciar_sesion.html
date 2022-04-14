@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>index</title>
+    <title>iniciar sesion</title>
 </head>
 <body>
-    <div class="principal">
-        <a href="iniciar_sesion.html">inisiar sesion</a>
-        <a href="registrarse.html">registrarse</a>
-    </div>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Login</button>
+    </form>
 </body>
 </html>

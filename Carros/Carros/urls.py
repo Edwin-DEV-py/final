@@ -16,6 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from aplicaciones.views import registrarse,index,iniciar_seccion
+from django.contrib.auth.views import LoginView,LogoutView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', index,name="index"),
+    path('index.html',index,name="inicio"),
+    path('registrarse.html',registrarse,name="registrarse"),
+    path('iniciar_sesion.html',LoginView.as_view(template_name='iniciar_sesion.html'),name="iniciar_seccion"),
+    path('cerrar.html',LogoutView.as_view(template_name='cerrar.html'),name="cerrar"),
 ]

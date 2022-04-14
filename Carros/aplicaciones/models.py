@@ -1,18 +1,13 @@
 from distutils.command.upload import upload
 from django.db import models
+import random,string
+from django.utils.text import slugify
+from django.contrib.auth.models import User
 
+from django.contrib.auth.models import AbstractUser,BaseUserManager
 
-from django.contrib.auth.models import AbstractUser
+class Perfil(models.Model):
+    nombre = models.OneToOneField(User, on_delete=models.CASCADE)
 
-
-class User(AbstractUser):
-    email = models.EmailField('email address', unique=True)
-    username = models.CharField('nombre',max_length=50)
-    apellido = models.CharField('apellido',max_length=50,null=True)
-    telefono = models.CharField('telefono',max_length=10,null=True)
-    cedula = models.CharField('cedula',max_length=10,null=True)
-    direccion = models.CharField('direccion',max_length=150,null=True)
-    foto = models.ImageField(upload_to='Fotografias',null=True)
-    certificado = models.ImageField(upload_to='certificados',null=True)
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username','cedula']
+    def __str__(self):
+        return f'Perfil de {self.nombre.username}'

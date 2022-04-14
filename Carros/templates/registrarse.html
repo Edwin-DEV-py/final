@@ -1,15 +1,19 @@
+{% load widget_tweaks%}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>index</title>
+    <title>registrarse</title>
 </head>
 <body>
-    <div class="principal">
-        <a href="iniciar_sesion.html">inisiar sesion</a>
-        <a href="registrarse.html">registrarse</a>
-    </div>
+    <h1>Registrarse</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{form}}
+        <button type="submit">registrar</button>
+    </form>
 </body>
 </html>
