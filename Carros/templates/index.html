@@ -7,9 +7,17 @@
     <title>index</title>
 </head>
 <body>
+    {% if request.user.is_authenticated %}
+    <div class="perfil">
+        <li><a href="{% url 'perfil' %}">Perfil</a></li>
+        <li><a href="{% url 'cerrar' %}">Cerrar</a></li>
+    </div>
+    {% else %}
     <div class="principal">
         <a href="iniciar_sesion.html">inisiar sesion</a>
         <a href="registrarse.html">registrarse</a>
     </div>
+    {% endif %}
+
 </body>
 </html>

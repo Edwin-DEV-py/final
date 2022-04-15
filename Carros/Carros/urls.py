@@ -15,8 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
-from aplicaciones.views import registrarse,index,iniciar_seccion
+from django.conf.urls.static import static 
+from django.conf import settings
+from aplicaciones.views import registrarse,index,iniciar_seccion,salir,perfil,post
 from django.contrib.auth.views import LoginView,LogoutView
 
 urlpatterns = [
@@ -24,6 +25,11 @@ urlpatterns = [
     path('', index,name="index"),
     path('index.html',index,name="inicio"),
     path('registrarse.html',registrarse,name="registrarse"),
-    path('iniciar_sesion.html',LoginView.as_view(template_name='iniciar_sesion.html'),name="iniciar_seccion"),
-    path('cerrar.html',LogoutView.as_view(template_name='cerrar.html'),name="cerrar"),
+    path('iniciar_sesion.html',iniciar_seccion,name="iniciar_seccion"),
+    path('cerrar.html',salir,name="cerrar"),
+    path('perfil.html',perfil,name="perfil"),
+    path('post.html',post,name="post"),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
