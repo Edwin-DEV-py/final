@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls.static import static 
 from django.conf import settings
-from aplicaciones.views import registrarse,index,iniciar_seccion,salir,perfil,post
+from aplicaciones.views import registrarse,index,iniciar_seccion,salir,perfil,post2,rutasconductor
 from django.contrib.auth.views import LoginView,LogoutView
 
 urlpatterns = [
@@ -28,7 +28,8 @@ urlpatterns = [
     path('iniciar_sesion.html',iniciar_seccion,name="iniciar_seccion"),
     path('cerrar.html',salir,name="cerrar"),
     path('perfil.html',perfil,name="perfil"),
-    path('post.html',post,name="post"),
+    path('post2.html',post2,name="post2"),
+    path('rutas_conductor.html',rutasconductor,name="rutasconductor")
 ]
 
 if settings.DEBUG:

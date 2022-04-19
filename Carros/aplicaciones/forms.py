@@ -22,14 +22,12 @@ class Formulario_registro_usuario(UserCreationForm):
         help_texts = {k:"" for k in fields}
         
         
-class Formulario_auto(forms.ModelForm):
+
+        
+class CustomerForm(ModelForm):
     class Meta:
-        model = auto
-        fields = ['modelo','placa','color','foto_v','foto_tarjeta']
-        help_texts = {k:"" for k in fields}
+        model = Auto
+        fields = '__all__'
+        exclude = ['user']
         
         
-class Formauto(ModelForm):
-    class Meta:
-        model = automovil
-        fields='__all__'
