@@ -35,25 +35,23 @@ lista_direcciones = [
     ('Avenida','Av'),
 ]
 
-class Direccion_inicio(models.Model):
+class Direccion(models.Model):
     id = models.AutoField(primary_key=True)
-    direccion = models.CharField(
+    direccion_inicio = models.CharField(
         max_length=11,
         choices=lista_direcciones,
         default="Cl"
     )
-    cc = models.CharField(max_length=10)
-    numero = models.CharField(max_length=10)
-    extra = models.CharField(max_length=100)
+    cc_ini = models.CharField(max_length=10)
+    numero_ini = models.CharField(max_length=10)
+    extra_ini = models.CharField(max_length=100)
+    direccion_fin = models.CharField(
+        max_length=11,
+        choices=lista_direcciones,
+        default="Cl"
+    )
+    cc_fin = models.CharField(max_length=10)
+    numero_fin = models.CharField(max_length=10)
+    extra_fin = models.CharField(max_length=100)
     
-class Direccion_fin(models.Model):
-    id = models.AutoField(primary_key=True)
-    direccion = models.CharField(
-        max_length=11,
-        choices=lista_direcciones,
-        default="Cl"
-    )
-    cc = models.CharField(max_length=10)
-    numero = models.CharField(max_length=10)
-    extra = models.CharField(max_length=100)
     
