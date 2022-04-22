@@ -28,6 +28,12 @@ class CustomerForm(ModelForm):
     class Meta:
         model = Auto
         fields = '__all__'
+        exclude = ['user','aprobado']
+        
+class Direcciones(ModelForm):
+    class Meta:
+        model = Direccion
+        fields = '__all__'
         exclude = ['user']
         
         

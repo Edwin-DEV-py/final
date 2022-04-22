@@ -4,7 +4,7 @@ from time import time
 from django.shortcuts import get_object_or_404, render,redirect
 from django.contrib.auth.decorators import login_required
 from .models import *
-from .forms import CustomerForm, Formulario_registro_usuario
+from .forms import CustomerForm, Formulario_registro_usuario,Direcciones
 from django.contrib.auth import authenticate, get_user_model, login, logout
 from django.http.response import HttpResponse, JsonResponse
 from django.contrib import messages
@@ -66,4 +66,23 @@ def registrarse(request):
     return render(request,'registrarse.html',contexto)
 
 def rutasconductor(request):
-    return render(request,"rutas_conductor.html")
+    usuario = get_object_or_404(User,pk=request.user.pk)
+    auto = Auto.objects.get(aprobado=True)
+    if request.method == 'POST':
+        formulario = Direcciones(request.POST)
+        if formulario.is_valid():
+            post = formulario.save(commit = False)
+            post.user = usuario
+            post.user = auto
+            post.save()
+            return redirect('index.html')
+        else:
+           messages.success(request,'vehiculo no aprobado') 
+           return redirect('perfil.html')
+    else:
+        formulario = Direcciones()
+    contexto = {'form':formulario}
+    return render(request,"rutas_conductor.html",contexto)
+
+def rutas(request):
+    return render(request,"home_rutas.html")
