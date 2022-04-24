@@ -1,5 +1,5 @@
 {% load widget_tweaks%}
-
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,12 +11,23 @@
     <title>registrarse</title>
 </head>
 <body>
-    <h1>Registrarse</h1>
+    <main class="contenedor">
+        <div class="registro">
+            <div class="wave">
+                <img src="{% static 'media/img/user-interface.png' %}" alt="">
+            </div>
+        </div>
+    </main>
+
+<!--
+<h1>Registrarse</h1>
     <form action="" method="post">
         {% csrf_token %}
         {{form}}
         <button type="submit">registrar</button>
     </form>
+-->
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
