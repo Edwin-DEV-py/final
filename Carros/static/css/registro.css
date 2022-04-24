@@ -5,10 +5,10 @@
 
 .pprincipal{
     background-color: white;
-    height: 600px;
+    height: 400px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: bottom;
 }
 
 .principal{
@@ -58,3 +58,155 @@
 .bt:hover::before{
     transform: translate(12px,12px);
 }
+
+
+/*carro*/
+.ssecundaria{
+    position: relative;
+    width: 100%;
+    height: 400px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carro{
+    width: 320px;
+    height: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    background-color: white;
+}
+
+.parabrisa{
+    position: relative;
+    border: 8px solid #FE636E ;
+    border-bottom: none;
+    width: 220px;
+    height: 120px;
+    border-radius: 25px 25px 0 0;
+    background: rgb(147, 212, 255);
+    overflow: hidden;
+    transform: perspective(5px) rotateX(.15deg);
+    z-index: 2;
+}
+
+.parabrisa::before{
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 200px;
+    background: #ffffff45;
+    transform: rotate(30deg);
+    top: -60%;
+}
+
+.retrovisor{
+    position: absolute;
+    display: flex;
+    width: 320px;
+    height: 40px;
+    top: 90px;
+  }
+  
+.retrovisor::before, .retrovisor::after{
+    content: "";
+    position: absolute;
+    background: #FE636E;
+    width: 40px;
+    height: 30px;
+    border-radius: 20px;
+}
+.retrovisor::after{
+    right: 0;
+}
+
+.banco{
+    position: absolute;
+    width: 210px;
+    height: 50px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: space-around;
+}
+
+.banco::before, .banco::after{
+    content: "";
+    position: relative;
+    width: 70px;
+    height: 50px;
+    background: #00000045;
+    z-index: 2;
+    top: 0;
+    border-radius: 20px;
+}
+
+.farol{
+    width: 260px;
+    height: 50px;
+    background: #FE636E;
+    position: relative;
+    top: 3px;
+    border-radius: 15px 15px 0 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+.farol::before, .farol::after{
+    content: "";
+    position: relative;
+    background: #fff;
+    width: 60px;
+    height: 30px;
+    border-radius: 10px;
+    margin: 10px 15px;
+  }
+
+.parachoques{
+    width: 280px;
+    height: 40px;
+    background: gray;
+    position: relative;
+    top: 3px;
+    border-radius: 15px;
+}
+
+.parachoques::before, .parachoques::after{
+    content: "";
+    position: absolute;
+    background: darkgray;
+    width: 25px;
+    height: 50px;
+    top: -5px;
+    border-radius: 15px;
+    margin: 0 90px;
+  }
+.parachoques::after{
+    right: 0;
+}
+
+.ruedas{
+    position: relative;
+    width: 240px;
+    height: 60px;
+}
+.ruedas::before, .ruedas::after{
+    content: "";
+    position: absolute;
+    width: 45px;
+    height: 50px;
+    background: #333333;
+    border-radius: 0 0 15px 15px;
+    z-index: 1;
+    top: 3px;
+  }
+
+  
+  .ruedas::after{
+    right: 0;
+  }
