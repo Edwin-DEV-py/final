@@ -4,7 +4,7 @@ from time import time
 from django.shortcuts import get_object_or_404, render,redirect
 from django.contrib.auth.decorators import login_required
 from .models import *
-from .forms import CustomerForm, Formulario_registro_usuario,Direcciones
+from .forms import CustomerForm, Formulario_registro_usuario,Direcciones, postform
 from django.contrib.auth import authenticate, get_user_model, login, logout
 from django.http.response import HttpResponse, JsonResponse
 from django.contrib import messages
@@ -35,8 +35,10 @@ def salir(request):
     return redirect("index")
 
 def perfil(request):
-    return render(request,'perfil.html')
+    usuario = Autos.objects.filter(user_id = request.user.id)
+    return render(request,'perfil.html',{'u':usuario})
 
+@login_required
 def post2(request):
     usuario = get_object_or_404(User,pk=request.user.pk)
     if request.method == 'POST':
@@ -49,6 +51,8 @@ def post2(request):
     else:
         formulario = CustomerForm()
     return render(request,'post2.html',{'form':formulario})
+
+
 
 def registrarse(request):
     if request.method == 'POST':
@@ -65,20 +69,22 @@ def registrarse(request):
     contexto = {'form':form}
     return render(request,'registrarse.html',contexto)
 
+def verificar_auto(request):
+    usuario = Autos.objects.filter(user_id = request.user.id,aprobado = True)
+    return render(request,'perfil.html')
+
 def rutasconductor(request):
     usuario = get_object_or_404(User,pk=request.user.pk)
-    auto = Auto.objects.get(aprobado=True)
     if request.method == 'POST':
         formulario = Direcciones(request.POST)
         if formulario.is_valid():
             post = formulario.save(commit = False)
             post.user = usuario
-            post.user = auto
             post.save()
             return redirect('index.html')
         else:
-           messages.success(request,'vehiculo no aprobado') 
-           return redirect('perfil.html')
+            messages.success(request,'vehiculo no aprobado') 
+            return redirect('perfil.html')
     else:
         formulario = Direcciones()
     contexto = {'form':formulario}

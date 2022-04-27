@@ -1,6 +1,8 @@
 from dataclasses import field
 from email.policy import default
 import re
+from ssl import Options
+from turtle import pos
 from django import forms
 from django.forms import ModelForm, fields, widgets
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
@@ -21,12 +23,17 @@ class Formulario_registro_usuario(UserCreationForm):
         fields = ['first_name','last_name','username','password1','password2','telefono','cedula']
         help_texts = {k:"" for k in fields}
         
+class postform(forms.ModelForm):
+        contenido = forms.CharField(label='',widget=forms.Textarea(attrs={'rows':2,'placeholder':'que?'}))
         
+        class Meta:
+            model = post
+            fields = ['contenido']
 
         
 class CustomerForm(ModelForm):
     class Meta:
-        model = Auto
+        model = Autos
         fields = '__all__'
         exclude = ['user','aprobado']
         

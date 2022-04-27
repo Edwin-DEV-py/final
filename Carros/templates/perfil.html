@@ -23,8 +23,19 @@
         </div>
     </header>
     <div class="post">
+        {% if request.user.is_authenticated %}
+        <div>
+            <h2>{{ user.first_name }}</h2>
+            <h2>{{ user.last_name }}</h2>
+            {% for c in u %}
+            <h2>{{ c.placa }}</h2>
+            <h2>{{ c.modelo }}</h2>
+            {% endfor %}
+        </div>
         <a href="post2.html">post</a>
+        {% endif %}
     </div>
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>

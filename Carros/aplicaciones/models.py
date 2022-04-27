@@ -8,15 +8,21 @@ from django.utils import timezone
 from django.contrib.auth.models import AbstractUser,BaseUserManager
 from pytz import timezone
 
+from django.db.models.signals import post_save
+
 class Perfil(models.Model):
     nombre = models.OneToOneField(User, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='avatars',blank=True)
 
     def __str__(self):
         return f'Perfil de {self.nombre.username}'
+    
+        
 
 
     
-class Auto(models.Model):
+class Autos(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE,related_name='autos')
     placa = models.CharField(max_length=6)
     modelo = models.CharField(max_length=20)
     color = models.CharField(max_length=20)
@@ -25,7 +31,14 @@ class Auto(models.Model):
     aprobado = models.BooleanField(default=False)
     
     def __str__(self):
-        return self.placa
+        return f'{self.user.username}:{self.placa}'
+    
+class post(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE,related_name='posts')
+    contenido = models.TextField(max_length=100)
+    
+    def __str__(self):
+        return f'{self.user.username}:{self.contenido}'
 
 
 lista_direcciones = [
@@ -37,6 +50,7 @@ lista_direcciones = [
 ]
 
 class Direccion(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE,related_name='direcciones')
     id = models.AutoField(primary_key=True)
     direccion_inicio = models.CharField(
         max_length=11,
@@ -46,6 +60,30 @@ class Direccion(models.Model):
     cc_ini = models.CharField(max_length=10)
     numero_ini = models.CharField(max_length=10)
     extra_ini = models.CharField(max_length=100)
+    direccion_2 = models.CharField(
+        max_length=11,
+        choices=lista_direcciones,
+        default="Cl"
+    )
+    cc_2 = models.CharField(max_length=10)
+    numero_2 = models.CharField(max_length=10)
+    extra_2 = models.CharField(max_length=100)
+    direccion_3 = models.CharField(
+        max_length=11,
+        choices=lista_direcciones,
+        default="Cl"
+    )
+    cc_3 = models.CharField(max_length=10)
+    numero_3 = models.CharField(max_length=10)
+    extra_3 = models.CharField(max_length=100)
+    direccion_4 = models.CharField(
+        max_length=11,
+        choices=lista_direcciones,
+        default="Cl"
+    )
+    cc_4 = models.CharField(max_length=10)
+    numero_4 = models.CharField(max_length=10)
+    extra_4 = models.CharField(max_length=100)
     direccion_fin = models.CharField(
         max_length=11,
         choices=lista_direcciones,
