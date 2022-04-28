@@ -1,4 +1,5 @@
 from ast import For
+import imp
 from this import d
 from time import time
 from django.shortcuts import get_object_or_404, render,redirect
@@ -9,6 +10,9 @@ from django.contrib.auth import authenticate, get_user_model, login, logout
 from django.http.response import HttpResponse, JsonResponse
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
+from django.http import HttpResponseRedirect
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views import View
 
 def index(request):
     return render(request,'index.html')
@@ -69,10 +73,8 @@ def registrarse(request):
     contexto = {'form':form}
     return render(request,'registrarse.html',contexto)
 
-def verificar_auto(request):
-    usuario = Autos.objects.filter(user_id = request.user.id,aprobado = True)
-    return render(request,'perfil.html')
 
+@login_required
 def rutasconductor(request):
     usuario = get_object_or_404(User,pk=request.user.pk)
     if request.method == 'POST':
@@ -91,4 +93,29 @@ def rutasconductor(request):
     return render(request,"rutas_conductor.html",contexto)
 
 def rutas(request):
-    return render(request,"home_rutas.html")
+    rutas = Direccion.objects.all()
+    user = request.user
+    contexto = {
+        'user': user,
+        'rutas':rutas
+    }
+    return render(request,"home_rutas.html",contexto)
+
+
+
+def darlike(request,pk):
+    post = Direccion.objects.get(pk=pk)
+    like = False
+    for like in post.liked.filter(id=request.user.id):
+        if like == request.user:
+            like = True
+            break
+    if not like:
+        post.liked.add(request.user)
+    if like:
+        post.liked.remove(request.user)
+                
+    next = request.POST.get('next','/')
+    return HttpResponseRedirect(next)
+
+            

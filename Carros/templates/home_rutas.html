@@ -4,9 +4,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/6ce8f7f47a.js" crossorigin="anonymous"></script>
     <title>Rutas</title>
 </head>
 <body>
     <h1>Rutas</h1>
+    <table border="1">
+        <thead>
+            <th>Conductor</th>
+            <th>Inicio</th>
+            <th>rutas</th>
+            <th>Fin</th>
+            <th>Aceptar?</th>
+        </thead>
+        <tbody>
+            {% for c in rutas %}
+            <tr>
+                <td>{{ c.user.first_name }}</td>
+                <td>{{ c.direccion_inicio }}{{ c.cc_ini }}#{{ c.numero_ini }}<td>
+                <td>{{ c.direccion_fin }}{{ c.cc_fin }}#{{ c.numero_fin }}</td>
+                <td>
+                   <form action="{% url 'dar_like' c.pk %}" method="POST">
+                       {% csrf_token %}
+                       <button type="submit"><i class="fa-regular fa-thumbs-up"></i><span>{{ c.liked.all.count }}</span></button>
+                   </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>

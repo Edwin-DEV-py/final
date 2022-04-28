@@ -31,7 +31,7 @@ class Autos(models.Model):
     aprobado = models.BooleanField(default=False)
     
     def __str__(self):
-        return f'{self.user.username}:{self.placa}'
+        return f'{self.user.username}:{self.placa},{self.aprobado}'
     
 class post(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE,related_name='posts')
@@ -92,5 +92,11 @@ class Direccion(models.Model):
     cc_fin = models.CharField(max_length=10)
     numero_fin = models.CharField(max_length=10)
     extra_fin = models.CharField(max_length=100)
+    
+    liked = models.ManyToManyField(User,blank=True, related_name='liked')
+    
+    
+
+
     
     
