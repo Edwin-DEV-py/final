@@ -17,6 +17,12 @@ class Perfil(models.Model):
     def __str__(self):
         return f'Perfil de {self.nombre.username}'
     
+def create_profile(sender, instance, created, *kwargs):
+    if created:
+        Perfil.objects.create(user=instance)
+        
+
+    
         
 
 

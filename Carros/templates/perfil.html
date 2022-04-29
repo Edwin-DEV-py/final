@@ -22,6 +22,9 @@
             </nav>
         </div>
     </header>
+    <div>
+        <h2>@{{ user.username }}</h2>
+    </div>
     <div class="post">
         {% if request.user.is_authenticated %}
         <div>
@@ -36,7 +39,80 @@
         <a href="post2.html">post</a>
         {% endif %}
     </div>
+    <form name="registro">
+        <div class="calificaciones">
+            <select name="puntuacion" id="puntuacion">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <input type="text" id="comentario" name="comentario" placeholder="Comentario">
+            <input type="button" name="btn1" value="Enviar" onclick="nodo() , obtenerdatos() " >
+        </div>  
+        
+        <div>
+            <h3>Puntuacion:</h3><input type="text" id="puntos">
+            <h3>Comentario:</h3><input type="text" id="comentar">
+        </div>
+    </form>
 
+     
+    <script type="text/javascript">
+        function obtenerdatos(){
+            var calificacion = parseFloat(document.getElementById('puntuacion').value);
+            var comentario = document.getElementById('comentario').value;
+
+            document.registro.puntos.value = calificacion;
+            document.registro.comentar.value = comentario;
+
+            class Nodo{
+                constructor(dato,siguiente){
+                    this.dato = dato;
+                    this.siguiente = siguiente;
+                };
+            };
+
+            class Listasimple{
+                constructor(){
+                    this.cabeza = null;
+                    this.tamano = 0;
+                };
+            
+
+                insertar(dato){
+                    const nuevonodo = new Nodo(dato, null);
+                    if(!this.cabeza){
+                        this.cabeza = nuevonodo
+                    }else{
+                        let actual = this.cabeza;
+                        while(actual.siguiente){
+                            actual = actual.siguiente;
+                        };
+                        actual.siguiente = nuevonodo;/*verificamos is el siguiente nodo esta vacio para colocar el nmuevo valor*/
+
+                    this.tamano++
+                     };
+               };
+
+               mostrar(){
+                   let actual = this.cabeza;
+                   while(actual){
+                       console.log(actual.value);
+                       actual = actual.siguiente;
+                   };
+               };
+
+            };
+
+            const Listasimple = new Listasimple();
+            Listasimple.insertar(calificacion)
+            Listasimple.insertar(comentario)
+            Listasimple.mostrar()
+
+        }
+    </script>
 
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>

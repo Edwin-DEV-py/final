@@ -41,6 +41,6 @@ class Direcciones(ModelForm):
     class Meta:
         model = Direccion
         fields = '__all__'
-        exclude = ['user']
+        exclude = ['user','liked']
         
         

@@ -118,4 +118,18 @@ def darlike(request,pk):
     next = request.POST.get('next','/')
     return HttpResponseRedirect(next)
 
+def perfiles(request, username=None):
+    current_user = request.user
+    if username and username != current_user.username:
+        user = User.objects.get(username = username)
+        post = user.direcciones.all()
+    else:
+        post = current_user.direcciones.all()
+        user = current_user
+    contexto = {
+        'user':user,
+        'post':post
+    }
+    return render(request, 'perfil.html',contexto)
+
             
