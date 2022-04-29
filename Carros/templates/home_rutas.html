@@ -22,7 +22,8 @@
         </div>
         </header>
     <h1>Rutas</h1>
-    <table border="1">
+    <input type="text" id="filtro" onkeyup="buscar()" placeholder="Filtro">
+    <table border="1" id="table" class="display" data-filter-control="true" data-show-search-clear-button="true">
         <thead>
             <th>Conductor</th>
             <th>Inicio</th>
@@ -46,5 +47,28 @@
             {% endfor %}
         </tbody>
     </table>
+    <script>
+        function buscar(){
+            let input, filter, table, tr, td, i, txtValue;
+
+            input = document.getElementById("filtro");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("table");
+            tr = table.getElementsByTagName("tr");
+
+            for(let i = 0; i < tr.length; i++){
+                td = tr[i].getElementsByTagName("td")[1,3];
+                if(td){
+                    txtValue = td.textContent || td.innerText;
+                    if(txtValue.toUpperCase().indexOf(filter)>-1){
+                        tr[i].style.display = "";
+                    }
+                    else{
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
 </body>
 </html>

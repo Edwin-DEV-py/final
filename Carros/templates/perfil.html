@@ -22,14 +22,13 @@
             </nav>
         </div>
     </header>
-    <div>
-        <h2>@{{ user.username }}</h2>
+    <div class="card">
+        <h2>{{ user.first_name }}</h2>
+        <h2>{{ user.last_name }}</h2>
     </div>
     <div class="post">
         {% if request.user.is_authenticated %}
         <div>
-            <h2>{{ user.first_name }}</h2>
-            <h2>{{ user.last_name }}</h2>
             {% for c in u %}
             <h2>{{ c.placa }}</h2>
             <h2>{{ c.modelo }}</h2>
@@ -53,9 +52,6 @@
         </div>  
         
         <div>
-            <h3>Puntuacion:</h3><input type="text" id="puntos">
-            <h3>Comentario:</h3><input type="text" id="comentar">
-        </div>
     </form>
 
      
