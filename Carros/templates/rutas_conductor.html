@@ -4,9 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/6ce8f7f47a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <title>Conductor</title>
 </head>
 <body>
+    <header class="header">
+        <div class="perfil">
+            <a href="" class="Logo"><img src="{% static 'media/img/logo2.png' %}" alt=""></a>
+            <nav class="navegacion">
+                <ul>
+                    <li class="nav-item active"><a href="{% url 'perfil' %}">{{ user.first_name }}</a></li>
+                    <li class="nav-item active"><a href="{% url 'cerrar' %}">Cerrar</a></li>
+                </ul>
+            </nav>
+        </div>
+        </header>
     <form action="" method="post">
         {% csrf_token %}
         {{form.as_p}}

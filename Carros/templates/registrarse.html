@@ -25,50 +25,42 @@
                     {% csrf_token %}
                     <div class="grupo_input">
                         <label class="fill fill1">
-                            {% render_field form.first_name class="texto_input" %}
-                            <span class="nn">Nombre:</span>
+                            {% render_field form.first_name class="texto_input" placeholder="Nombre" %}
                         </label>
                     </div>
                     <div class="grupo_input">
                         <label class="fill fill2">
-                            {% render_field form.last_name class="texto_input" %}
-                            <span class="ap">Apellido:</span>
+                            {% render_field form.last_name class="texto_input" placeholder="Apellido"  %}
                         </label>
                     </div>
                     <div class="grupo_input">
                         <label class="fill fill3">
-                            {% render_field form.username class="texto_input" %}
-                            <span class="email">Email:</span>
+                            {% render_field form.username class="texto_input" placeholder="Email" %}
                         </label>
                     </div>
                     <div class="grupo_input">
                         <label class="fill fill4">
-                            {% render_field form.password1 class="texto_input" %}
-                            <span class="cc">Contrasena:</span>
+                            {% render_field form.password1 class="texto_input" placeholder="Contrasena" %}
                         </label>
                     </div>
                     <div class="grupo_input">
                         <label class="fill fill5">
-                            {% render_field form.password2 class="texto_input" %}
-                            <span class="cc2">Repetir contrasena:</span>
+                            {% render_field form.password2 class="texto_input" placeholder="Repetir contrasena" %}
                         </label>
                     </div>
                     <div class="grupo_input">
                         <label class="fill fill6">
-                            {% render_field form.telefono class="texto_input" %}
-                            <span class="tel">telefono:</span>
+                            {% render_field form.telefono class="texto_input" placeholder="Telefono" %}
                         </label>
                     </div>
                     <div class="grupo_input">
                         <label class="fill fill7">
-                            {% render_field form.cedula class="texto_input" %}
-                            <span class="ce">Cedula:</span>
+                            {% render_field form.cedula class="texto_input" placeholder="Cedula" %}
                         </label>
                     </div>
                     <div class="grupo_input">
                         <label class="fill fill8">
-                            {% render_field form.direccion class="texto_input" %}
-                            <span class="di">Direccion:</span>
+                            {% render_field form.direccion class="texto_input" placeholder="Direccion" %}
                         </label>
                     </div>
                     <button type="submit" class="bt2">registrar</button>
