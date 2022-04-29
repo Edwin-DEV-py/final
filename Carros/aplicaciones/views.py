@@ -128,7 +128,7 @@ def perfiles(request, username=None):
         user = current_user
     contexto = {
         'user':user,
-        'post':post
+        'post':post,
     }
     return render(request, 'perfil.html',contexto)
 

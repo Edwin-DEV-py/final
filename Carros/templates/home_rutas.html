@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/6ce8f7f47a.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/tabla.css' %}">
     <title>Rutas</title>
 </head>
 <body>
@@ -22,31 +23,39 @@
         </div>
         </header>
     <h1>Rutas</h1>
-    <input type="text" id="filtro" onkeyup="buscar()" placeholder="Filtro">
-    <table border="1" id="table" class="display" data-filter-control="true" data-show-search-clear-button="true">
-        <thead>
-            <th>Conductor</th>
-            <th>Inicio</th>
-            <th>rutas</th>
-            <th>Fin</th>
-            <th>Aceptar?</th>
-        </thead>
-        <tbody>
-            {% for c in rutas %}
-            <tr>
-                <td><a href="{% url 'perfiles' c.user.username %}">@{{ c.user.first_name }}</a></td>
-                <td>{{ c.direccion_inicio }}{{ c.cc_ini }}#{{ c.numero_ini }}<td>
-                <td>{{ c.direccion_fin }}{{ c.cc_fin }}#{{ c.numero_fin }}</td>
-                <td>
-                   <form action="{% url 'dar_like' c.pk %}" method="POST">
-                       {% csrf_token %}
-                       <button type="submit"><i class="fa-regular fa-thumbs-up"></i><span>{{ c.liked.all.count }}</span></button>
-                   </form>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div id="main">
+        <input type="text" id="filtro" onkeyup="buscar()" placeholder="Filtro">
+        <table id="table" class="display" data-filter-control="true" data-show-search-clear-button="true">
+            <thead>
+                <th>Conductor</th>
+                <th>Inicio</th>
+                <th>Parada#1</th>
+                <th>Parada#2</th>
+                <th>Parada#3</th>
+                <th>Fin</th>
+                <th>Aceptar?</th>
+            </thead>
+            <tbody>
+                {% for c in rutas %}
+                <tr>
+                    <td><a href="{% url 'perfiles' c.user.username %}">@{{ c.user.first_name }}</a></td>
+                    <td>{{ c.direccion_inicio }}{{ c.cc_ini }}#{{ c.numero_ini }}</td>
+                    <td>{{ c.direccion_2 }}{{ c.cc_2 }}#{{ c.numero_2 }}</td>
+                    <td>{{ c.direccion_3 }}{{ c.cc_3 }}#{{ c.numero_3 }}</td>
+                    <td>{{ c.direccion_4 }}{{ c.cc_4 }}#{{ c.numero_4 }}</td>
+                    <td>{{ c.direccion_fin }}{{ c.cc_fin }}#{{ c.numero_fin }}</td>
+                    <td><form action="{% url 'dar_like' c.pk %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit"><i class="fa-regular fa-thumbs-up"></i><span>{{ c.liked.all.count }}</span></button>
+                    </form></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+
+    
     <script>
         function buscar(){
             let input, filter, table, tr, td, i, txtValue;
@@ -57,7 +66,7 @@
             tr = table.getElementsByTagName("tr");
 
             for(let i = 0; i < tr.length; i++){
-                td = tr[i].getElementsByTagName("td")[1,3];
+                td = tr[i].getElementsByTagName("td")[1,5];
                 if(td){
                     txtValue = td.textContent || td.innerText;
                     if(txtValue.toUpperCase().indexOf(filter)>-1){
