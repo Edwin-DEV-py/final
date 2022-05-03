@@ -1,0 +1,30 @@
+.caja{
+    width: 100%;
+    height: 930px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(#87f1d2, #c0f8d7);
+}
+
+.container{
+    background-color: rgb(134, 240, 240);
+    width: 300px;
+}
+
+button{
+    position: absolute;
+    left: 1400px;
+    bottom: 400px;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    background: #53ebb6;
+    outline: none;
+    color:#000;
+    border: none;
+    border-radius: 30px;
+    font-weight: bold;
+    font-style:inherit;
+}

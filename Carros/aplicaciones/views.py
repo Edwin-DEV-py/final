@@ -14,6 +14,8 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View
 
+
+
 def index(request):
     return render(request,'index.html')
 
