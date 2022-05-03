@@ -1,0 +1,84 @@
+.tabla{
+    position: relative;
+    top: 70px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+table{
+    background-color: rgb(67, 224, 172);
+    text-align: left;
+    border-collapse: collapse;
+    width: 80%;
+    color: rgb(3, 3, 3);
+}
+
+th, td{
+    padding: 10px;
+}
+
+thead{
+    background-color: rgb(22, 230, 91);
+    border-bottom: solid 2px black;
+    color: white;
+    font-size: 20px;
+}
+
+tr:nth-child(even){
+    background-color: rgb(110, 232, 248);
+}
+
+.post2{
+    position: absolute;
+    right: 0;
+    border-radius: 10px;
+    width: 130px;
+    height: 30px;
+    background: rgb(241, 241, 255);
+    display: flex;
+    text-align: center;
+}
+
+.post2 a{
+    background: rgb(241, 241, 255);
+    color: aqua;
+    text-decoration: none;
+}
+
+
+.formulario2{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    background-color: aqua;
+    justify-content: center;
+    align-items: center;
+}
+
+.formulario2 .boton{
+    padding: 8px 20px;
+    cursor: pointer;
+    background: #2AC58F;
+    outline: none;
+    color:#000;
+    border: none;
+    border-radius: 30px;
+    font-weight: bold;
+    font-style:inherit;
+}
+
+.formulario2 .inp{
+    width: 20%;
+    padding: 2px 0;
+    border-left: 0;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 2px solid rgb(50, 223, 165);
+    outline: none;
+    background: transparent;
+    color: black;
+}

@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <link rel="stylesheet" href="{% static 'css/tarjeta.css' %}">
+    <link rel="stylesheet" href="{% static 'css/tablap.css' %}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://kit.fontawesome.com/df9fd6f2d3.js" crossorigin="anonymous"></script>
@@ -40,15 +41,41 @@
                     <h2 id="placa">Placa: {{ c.placa }}</h2>
                     <h2>Modelo: {{ c.modelo }}</h2>
                     <h2>{{ c.user.telefono}}</h2>
-                {% endfor %}
+                    {% endfor %}
             </div>
         </div>
     </div>
-    <div class="post">
-        <a href="post2.html">post</a>
-    </div>
+    <div class="post2">
+        <a href="post2.html">Inscribir Vehiculo</a>
+    </div>  
+    <div class="tabla">
+        <table border="1" class="tablaa">
+            <thead>
+                <th>Inicio</th>
+                <th>Parada 1</th>
+                <th>Parada 2</th>
+                <th>Parada 3</th>
+                <th>Fin</th>
+                <th>Pasajeros</th>
+                <th>Editar/Borrar</th>
+            </thead>
+            <tbody>
+                {% for R in r %}
+                <tr>
+                    <td>{{ R.direccion_inicio }}{{ R.cc_ini }}#{{ R.numero_ini }}</td>
+                    <td>{{ R.direccion_2 }}{{ R.cc_2 }}#{{ R.numero_2 }}</td>
+                    <td>{{ R.direccion_3 }}{{ R.cc_3 }}#{{ R.numero_3 }}</td>
+                    <td>{{ R.direccion_4 }}{{ R.cc_4 }}#{{ R.numero_4 }}</td>
+                    <td>{{ R.direccion_fin }}{{ R.cc_fin }}#{{ R.numero_fin }}</td>
+                    <td>{{ R.liked.count }}</td>
+                    <td><a href="{% url 'editar' R.id %}">Editar</a>        <a href="{% url 'terminar' R.id %}">Terminar</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div> 
     {% endif %}
-    <div class="formulario">
+    <div class="formulario2">
         <form name="registro">
             <div class="calificaciones">
                 <select name="puntuacion" id="puntuacion">
@@ -58,8 +85,8 @@
                     <option value="4">4</option>
                     <option value="5">5</option>
                 </select>
-                <input type="text" id="comentario" name="comentario" placeholder="Comentario">
-                <input type="button" name="btn1" value="Enviar" onclick="nodo() , obtenerdatos() " >
+                <input type="text" class="inp" id="comentario" name="comentario" placeholder="Comentario">
+                <input type="button" class="boton" name="btn1" value="Enviar" onclick="nodo() , obtenerdatos() " >
             </div>  
             
             <div>

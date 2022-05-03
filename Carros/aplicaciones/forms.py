@@ -1,5 +1,6 @@
 from dataclasses import field
 from email.policy import default
+from enum import auto
 import re
 from ssl import Options
 from turtle import pos
@@ -38,9 +39,14 @@ class CustomerForm(ModelForm):
         exclude = ['user','aprobado']
         
 class Direcciones(ModelForm):
+    
     class Meta:
         model = Direccion
         fields = '__all__'
-        exclude = ['user','liked']
+        exclude = ['user','liked','fecha']
+        widgets ={
+            'myfield':forms.TextInput(attrs={'class':'texto_input'})
+        }
+    
         
         

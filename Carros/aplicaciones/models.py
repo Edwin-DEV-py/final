@@ -69,35 +69,41 @@ class Direccion(models.Model):
     direccion_2 = models.CharField(
         max_length=11,
         choices=lista_direcciones,
-        default="Cl"
+        default="Cl",
+        blank=True,
     )
-    cc_2 = models.CharField(max_length=10)
-    numero_2 = models.CharField(max_length=10)
-    extra_2 = models.CharField(max_length=100)
+    cc_2 = models.CharField(max_length=10,blank=True)
+    numero_2 = models.CharField(max_length=10,blank=True)
+    extra_2 = models.CharField(max_length=100,blank=True)
     direccion_3 = models.CharField(
         max_length=11,
         choices=lista_direcciones,
-        default="Cl"
+        default="Cl",
+        blank=True
     )
-    cc_3 = models.CharField(max_length=10)
-    numero_3 = models.CharField(max_length=10)
-    extra_3 = models.CharField(max_length=100)
+    cc_3 = models.CharField(max_length=10,blank=True)
+    numero_3 = models.CharField(max_length=10,blank=True)
+    extra_3 = models.CharField(max_length=100,blank=True)
     direccion_4 = models.CharField(
         max_length=11,
         choices=lista_direcciones,
-        default="Cl"
+        default="Cl",
+        blank=True
     )
-    cc_4 = models.CharField(max_length=10)
-    numero_4 = models.CharField(max_length=10)
-    extra_4 = models.CharField(max_length=100)
+    cc_4 = models.CharField(max_length=10,blank=True)
+    numero_4 = models.CharField(max_length=10,blank=True)
+    extra_4 = models.CharField(max_length=100,blank=True)
     direccion_fin = models.CharField(
         max_length=11,
         choices=lista_direcciones,
-        default="Cl"
+        default="Cl",
+        blank=True
     )
     cc_fin = models.CharField(max_length=10)
     numero_fin = models.CharField(max_length=10)
     extra_fin = models.CharField(max_length=100)
+    
+    fecha = models.DateTimeField(verbose_name='Fecha',blank=True,null=True)
     
     liked = models.ManyToManyField(User,blank=True, related_name='liked')
     

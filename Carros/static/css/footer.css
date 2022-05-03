@@ -1,0 +1,16 @@
+footer{
+    width: 100%;
+    height: 100px;
+    background-color: white;
+    display: flex;
+    align-items: flex-end;
+    background-image: url(https://thumbs.dreamstime.com/b/vector-seamless-lattice-pattern-modern-stylish-texture-monochrome-trellis-repeating-geometric-grid-simple-design-graphic-113381533.jpg);
+}
+
+.headerr{
+    position: fixed;
+    width: 100%;
+    height: 100px;
+    background-color: white;
+    background-image: url(https://thumbs.dreamstime.com/b/vector-seamless-lattice-pattern-modern-stylish-texture-monochrome-trellis-repeating-geometric-grid-simple-design-graphic-113381533.jpg);
+}

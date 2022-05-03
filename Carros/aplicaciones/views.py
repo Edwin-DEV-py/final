@@ -40,7 +40,8 @@ def salir(request):
 
 def perfil(request):
     usuario = Autos.objects.filter(user_id = request.user.id)
-    return render(request,'perfil.html',{'u':usuario})
+    rutas = Direccion.objects.filter(user_id = request.user.id)
+    return render(request,'perfil.html',{'u':usuario,'r':rutas})
 
 @login_required
 def post2(request):
@@ -100,6 +101,23 @@ def rutas(request):
         'rutas':rutas
     }
     return render(request,"home_rutas.html",contexto)
+
+def editarrutas(request,id):
+    rutas = Direccion.objects.get(id=id)
+    if request.method == 'GET':
+        form = Direcciones(instance=rutas)
+        contesto = {'form':form}
+    else:
+        form = Direcciones(request.POST, instance=rutas)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    return render(request, 'rutas_conductor.html',contesto)
+
+def terminarruta(request,id):
+    rutas = Direccion.objects.get(id=id)
+    rutas.delete()
+    return redirect('index')
 
 
 

@@ -1,4 +1,5 @@
 {% load static %}
+{% load widget_tweaks%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/6ce8f7f47a.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/rutas.css' %}">
     <title>Conductor</title>
 </head>
 <body>
@@ -21,10 +23,137 @@
             </nav>
         </div>
         </header>
-    <form action="" method="post">
-        {% csrf_token %}
-        {{form.as_p}}
-        <button type="submit">Enviar</button>
-    </form>
+        <div class="contenedor">
+            <div class="formulario">
+                <div id="formularios" class="form">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <div class="uno" id="uno">
+                            <h3>Inicio</h3>
+                            <div class="grupo_input">
+                                <label class="fill fill1">
+                                    {% render_field form.direccion_inicio class="c_input" placeholder="Calle" %}
+                                </label>
+                            </div>
+                            <div class="grupo_input">
+                                <label class="fill fill1">
+                                    {% render_field form.cc_ini class="texto_input" placeholder="Cl/Cr/trans/Av/Dig" %}
+                                </label>
+                            </div>
+                            <div class="grupo_input">
+                                <label class="fill fill1">
+                                    {% render_field form.numero_ini class="texto_input" placeholder="Direccion" %}
+                                </label>
+                            </div>
+                            <div class="grupo_input">
+                                <label class="fill fill1">
+                                    {% render_field form.extra_ini class="texto_input" placeholder="Extra" %}
+                                </label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="dos" id="dos">
+                            <h3>Parada 1</h3>
+                            <div class="grupo_input">
+                                <label class="fill fill1">
+                                    {% render_field form.direccion_2 class="c_input" placeholder="Calle" %}
+                                </label>
+                            </div>
+                            <div class="grupo_input">
+                                <label class="fill fill1">
+                                    {% render_field form.cc_2 class="texto_input" placeholder="Cl/Cr/trans/Av/Dig" %}
+                                </label>
+                            </div>
+                            <div class="grupo_input">
+                                <label class="fill fill1">
+                                    {% render_field form.numero_2 class="texto_input" placeholder="Direccion" %}
+                                </label>
+                            </div>
+                            <div class="grupo_input">
+                                <label class="fill fill1">
+                                    {% render_field form.extra_2 class="texto_input" placeholder="Extra" %}
+                                </label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="tres" id="tres">
+                            <h3>Parada 2</h3>
+                            <div class="grupo_input">
+                                <label class="fill fill1">
+                                    {% render_field form.direccion_3 class="c_input" placeholder="Calle" %}
+                                </label>
+                            </div>
+                            <div class="grupo_input">
+                                <label class="fill fill1">
+                                    {% render_field form.cc_3 class="texto_input" placeholder="Cl/Cr/trans/Av/Dig" %}
+                                </label>
+                            </div>
+                            <div class="grupo_input">
+                                <label class="fill fill1">
+                                    {% render_field form.numero_3 class="texto_input" placeholder="Direccion" %}
+                                </label>
+                            </div>
+                            <div class="grupo_input">
+                                <label class="fill fill1">
+                                    {% render_field form.extra_3 class="texto_input" placeholder="Extra" %}
+                                </label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="cuatro" id="cuatro">
+                            <h3>Parada 3</h3>
+                            <div class="grupo_input">
+                                <label class="fill fill1">
+                                    {% render_field form.direccion_4 class="c_input" placeholder="Calle" %}
+                                </label>
+                            </div>
+                            <div class="grupo_input">
+                                <label class="fill fill1">
+                                    {% render_field form.cc_4 class="texto_input" placeholder="Cl/Cr/trans/Av/Dig" %}
+                                </label>
+                            </div>
+                            <div class="grupo_input">
+                                <label class="fill fill1">
+                                    {% render_field form.numero_4 class="texto_input" placeholder="Direccion" %}
+                                </label>
+                            </div>
+                            <div class="grupo_input">
+                                <label class="fill fill1">
+                                    {% render_field form.extra_4 class="texto_input" placeholder="Extra" %}
+                                </label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="cinco" id="cinco">
+                            <h3>Fin</h3>
+                            <div class="grupo_input">
+                                <label class="fill fill1">
+                                    {% render_field form.direccion_fin class="c_input" placeholder="Calle" %}
+                                </label>
+                            </div>
+                            <div class="grupo_input">
+                                <label class="fill fill1">
+                                    {% render_field form.cc_fin class="texto_input" placeholder="Cl/Cr/trans/Av/Dig" %}
+                                </label>
+                            </div>
+                            <div class="grupo_input">
+                                <label class="fill fill1">
+                                    {% render_field form.numero_fin class="texto_input" placeholder="Direccion" %}
+                                </label>
+                            </div>
+                            <div class="grupo_input">
+                                <label class="fill fill1">
+                                    {% render_field form.extra_fin class="texto_input" placeholder="Extra" %}
+                                </label>
+                            </div>
+                        </div>
+                        <div class="boton">
+                            <button type="submit">Publicar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+<script src="{% static 'js/jquery.js' %}"></script>
 </body>
 </html>
